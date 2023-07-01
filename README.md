@@ -449,6 +449,189 @@ SIGHUP | 1 | For daemons: reread the configuration file.
 |  `Z` | Zombie |
 |  `T` | Stopped |
 
+Command | Meaning | Usage
+--- | --- | ---
+at | Queue jobs for later execution. | `at [-f file] time`
+atq | Lists the user's pending jobs. | `atq [-q queue]`
+atrm | Deletes jobs, determined by their job number. | `atrm <job>`
+batch | Executes commands when system load level permits. | `batch`
+crontab | Maintain crontab files for individual users. | `crontab [-u user] file`
+halt | Stop the system. | `halt`
+init run level | Process control initialization. | `init <runlevel>`
+jobs | Lists currently executing jobs. | `jobs [-l]`
+kill | Terminate a process. | `kill [-signal] pid`
+mesg | Control write access to your terminal. | `mesg [y/n]`
+netstat | Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships. | `netstat [-options]`
+nice | Run a program with modified scheduling priority. | `nice [-n increment] command`
+pgrep | Display processes. | `pgrep [-signal] pattern`
+ps | Report process status. | `ps [-options]`
+pstree | Display a tree of processes. | `pstree [-options]`
+reboot | Stop the system. | `reboot`
+renice | Alter the priority of running processes. | `renice [-n increment] [-p pid]`
+shutdown | Bring the system down. | `shutdown [-options]`
+sleep | Delay for a specified time. | `sleep <duration>`
+time | Time a command or report resource usage. | `time command`
+top | Display top CPU processes. | `top`
+uptime | Show how long the system has been running. | `uptime`
+vmstat | Report virtual memory statistics. | `vmstat [-options]`
+w | Show who is logged on and what they are doing. | `w [-husf]`
+wall | Send a message to everybody's terminals. | `wall [-n] message`
+who | Show who is logged on. | `who [-Hu]`
+write | Send a message to another user. | `write user [terminal]`
+
+## I/O redirection
+There are three types of I/O, which each have their own identifier, called a file descriptor:
+
+`standard input: 0 : <`
+
+`standard output: 1 : >`
+
+`standard error: 2`
+
+Output redirection with `>` and `|` e.g. `cat test1 test2 > test3` this will redirect the contents of test1 and test2 files to test3 as well as ovewrite the content of test3. Use `>>` operator to append content.
+
+Redirecting "nothing" to an existing file is equal to emptying the file: `> list` This process is called *truncating*.
+
+Create a new empty file : `> newlist`
+`cat file | mail someone` or `mail abc@somewhere.org < file` 
+
+`tee` command to copy input to standard output and one or more output files in one move.
+`date | tee file1 file2` tee called on through a pipe (|).
+`uptime | tee -a file2` -a option to tee results in appending input to the file(s).
+
+**A program that takes input, performs operations on it, and produces the output on the standard output is known as a `filter`. Filters are frequently used to modify the structure of output.**
+1. https://www.gnu.org/software/grep/manual/grep.html `grep`
+2. https://cheat.sh/sort `sort`
+
+**Text Editor:**  enter the `vimtutor` command in your shell or command line after installing vim.
+##
+
+You can view a comprehensive list of all variables currently defined for your session by using the `"printenv"` command.
+
+**Common environment variables:**
+
+| Variable name   | Stored information                                        |
+|-----------------|----------------------------------------------------------|
+| DISPLAY         | Used by the X Window system to identify the display server |
+| DOMAIN          | Domain name                                              |
+| EDITOR          | Stores your favorite line editor                          |
+| HISTSIZE        | Size of the shell history file in number of lines         |
+| HOME            | Path to your home directory                               |
+| HOSTNAME        | Local host name                                          |
+| INPUTRC         | Location of definition file for input devices             |
+| LANG            | Preferred language                                       |
+| LD_LIBRARY_PATH | Paths to search for libraries                             |
+| LOGNAME         | Login name                                               |
+| MAIL            | Location of your incoming mail folder                     |
+| MANPATH         | Paths to search for man pages                             |
+| OS              | String describing the operating system                    |
+| OSTYPE          | More information about version, etc.                      |
+| PAGER           | Used by programs like `man` for handling large outputs    |
+| PATH            | Search paths for commands                                 |
+| PS1             | Primary prompt                                           |
+| PS2             | Secondary prompt                                         |
+| PWD             | Present working directory                                |
+| SHELL           | Current shell                                            |
+| TERM            | Terminal type                                            |
+| UID             | User ID                                                  |
+| USER(NAME)      | User name                                                |
+| VISUAL          | Your favorite full-screen editor                         |
+| XENVIRONMENT    | Location of your personal settings for X behavior         |
+| XFILESEARCHPATH | Paths to search for graphical libraries                   |
+
+`echo $VARIBLE_NAME` to check out a specific variable.
+In order to change the content of a variable use `export VARIABLE = value` e.g. `export PATH=$PATH:/path to directory`
+
+*NOTE:When you export a variable in a session, it is valid only for that specific session and its child processes. Once you restart the computer or start a new session, the exported variables are no longer available. To make the changes to environment variables persistent across system reboots or new sessions, you would need to set them in configuration files that are read during the system startup or login process. The specific files and methods for setting persistent environment variables may vary depending on the operating system and shell you are using.*
+
+**https://tldp.org/HOWTO/Bash-Prompt-HOWTO/ Bash Prompt HOWTO**
+**https://tldp.org/ The Linux Documentation Project**
+
+| Command    | Meaning                                                 | Usage                                                    |
+|------------|---------------------------------------------------------|----------------------------------------------------------|
+| aptitude   | Manage packages Debian-style.                           | `aptitude install <package>`                              |
+| automount  | Automatically include newly inserted file systems.       | `automount -m <mountpoint>`                               |
+| dpkg       | Debian package manager.                                 | `dpkg -i <package.deb>`                                   |
+| dselect    | Manage packages Debian-style.                            | `dselect`                                                |
+| loadkeys   | Load keyboard configuration.                            | `loadkeys <keymap>`                                      |
+| lsof       | Identify processes.                                     | `lsof -i :<port>`                                        |
+| mount      | Include a new file system into the existing file system tree. | `mount <device> <mountpoint>`                       |
+| ntpdate    | Set the system time and date using a time server.        | `ntpdate <time_server>`                                   |
+| quota      | Display information about allowed disk space usage.      | `quota -u <username>`                                    |
+| recode     | Convert files to another character set.                 | `recode <encoding> <inputfile> > <outputfile>`             |
+| rpm        | Manage RPM packages.                                    | `rpm -i <package.rpm>`                                   |
+| setfont    | Choose a font.                                          | `setfont <fontfile>`                                     |
+| timezone   | Set the timezone.                                       | `timezone <timezone>`                                    |
+| tzconfig   | Set the timezone.                                       | `tzconfig`                                               |
+| ulimit     | Set or display resource limits.                         | `ulimit -n <limit>`                                      |
+| up2date    | Manage RPM packages.                                    | `up2date -u`                                             |
+| urpmi      | Manage RPM packages.                                    | `urpmi <package>`                                        |
+| yum        | Manage RPM packages.                                    | `yum install <package>`                                  |
+
+*Please note that the above usage examples are simplified and may require additional options or arguments depending on the specific use case. Make sure to consult the command's documentation or man page for more detailed information on how to use each command.*
+
+Commands related to printing:
+
+| Command    | Meaning                                          | Usage                                      |
+|------------|--------------------------------------------------|--------------------------------------------|
+| lpr or lp  | Print file                                       | `lpr <file>` or `lp <file>`                 |
+| lpq or lpstat | Query print queue                                | `lpq` or `lpstat`                          |
+| lprm or cancel | Remove print job                               | `lprm <jobID>` or `cancel <jobID>`          |
+| acroread   | PDF viewer                                       | `acroread <file.pdf>`                      |
+| groff      | Formatting tool                                  | `groff -ms <file>`                         |
+| gv         | PostScript viewer                                | `gv <file.ps>`                             |
+| printconf  | Configure printers                              | `printconf`                                |
+| xdvi       | DVI viewer                                       | `xdvi <file.dvi>`                          |
+| xpdf       | PDF viewer                                       | `xpdf <file.pdf>`                          |
+| *2ps       | Convert file to PostScript                       | `<command> <file> > output.ps`             |
+
+*Please note that the above usage examples are simplified and may require additional options or arguments depending on the specific use case. Make sure to consult the command's documentation or man page for more detailed information on how to use each command.*
+
+## Archiving data using the tar command, as well as compressing and unpacking the archives using gzip and bzip2.
+
+1. **Preparing Your Data:**
+        **Archiving with tar:**
+                -The `tar` command is used to create archive files by concatenating and compressing listed files.
+                -Use the `-c` option to create an archive and the `-f` option to specify the archive file name.
+                -Example: `tar cvf archive.tar files/` creates an archive named archive.tar containing the files/ directory.
+                -Example: `tar cvf archive.tar file1 file2` creates an archive named archive.tar containing file1 and file2.
+2. **Incremental Backups with tar:**
+
+        -tar supports creating incremental backups using the `-N` option.
+        -With -N, you can specify a date, and tar will include files modified more recently than the specified date in the backup.
+        -Example: `tar -N backup.tar -cvp files/` creates an incremental backup of files modified since the backup.tar archive.
+        -Example: `tar -N backup.tar -cvp newfile` creates an incremental backup including only the newfile that is more recent than the backup.tar archive.
+3. **Compressing and Unpacking with gzip or bzip2:**
+
+        -Data, including tarballs, can be compressed using `gzip` or `bzip2`.
+        -Use gzip to compress files, adding the `.gz` extension to the file name.
+        -Example: `gzip file.txt` compresses file.txt and creates `file.txt.gz`.
+        -Use `gzip -d` or `gunzip` to uncompress .gz files.
+        -Example: `gzip -d file.txt.gz` uncompresses file.txt.gz.
+        -Use `bzip2` for improved compression, creating smaller files than gzip.
+        -Example: `bzip2 file.txt` compresses file.txt and creates file.txt.bz2.
+        -Use `bzip2 -d` or `bunzip2` to uncompress .bz2 files.
+        -Example: `bzip2 -d file.txt.bz2` uncompresses file.txt.bz2.
+
+4. **Unpacking Compressed Archives with tar:**
+
+        -tar can directly handle compressed archives using the appropriate options.
+        -Use `tar zxvf file.tar.gz` to extract and uncompress a .tar.gz or .tgz archive.
+        -Use `tar jxvf file.tar.bz2` to extract and uncompress a .tar.bz2 archive.
+
+**Data Encryption with GNU Privacy Guard(`gpg`)**
+generate a key: `gpg --key-gen`
+get information about your key: `gpg --list-keys`
+encrypt a .tar archive: `gpg -e -r (part of) uid archive` , `-e` option tells gpg to encrypt, the `-r` option indicates who to encrypt for.
+
+*Note: Manual page for gpg*
+
+
+
+
+
+
+
 
 
 
