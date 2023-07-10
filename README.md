@@ -626,7 +626,8 @@ encrypt a .tar archive: `gpg -e -r (part of) uid archive` , `-e` option tells gp
 
 *Note: Manual page for gpg*
 
-
+## 
+*NOTE: GIVING SPACE BEFORE TYPING A COMMAND REMOVES IT FROM HISTORY. USE !NUM ASSOCIATED TO THE COMMAND IN ORDER TO DIRECTLY GET THE COMMAND
 
 
 
