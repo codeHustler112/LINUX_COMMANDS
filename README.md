@@ -187,19 +187,19 @@ Variable files are stored in the /var directory and hold data that frequently ch
 
 ## **Commands related to removing files:**
 
-To remove a single file: `**rm <filename>**`
+To remove a single file: **`rm <filename>`**
 
-To remove an empty directory: `**rmdir <directory>**`
+To remove an empty directory: **`rmdir <directory>`**
 
-To remove a non-empty directory (including all its files and subdirectories): `**rm -r <directory>**`
+To remove a non-empty directory (including all its files and subdirectories): **`rm -r <directory>`**
 
-To remove a directory and its contents without prompting for confirmation: `**rm -rf <directory>**`
+To remove a directory and its contents without prompting for confirmation: **`rm -rf <directory>`**
 
-To remove multiple files at once: `**rm <file1> <file2> <file3> ...**`
+To remove multiple files at once: **`rm <file1> <file2> <file3> ...`**
 
-To remove files matching a specific pattern using wildcards: `**rm <pattern>**`
+To remove files matching a specific pattern using wildcards: **`rm <pattern>`**
 
-To prompt for confirmation before removing each file: `**rm -i <filename>**`
+To prompt for confirmation before removing each file: **`rm -i <filename>`**
 
 *Note: Be cautious when using the rm command, especially with the -r and -f options, as they can permanently delete files and directories without further confirmation. It's always a good practice to double-check the files you intend to remove before executing the command.*
 
@@ -264,17 +264,17 @@ mike:~> `file /dev/log`
 
 Making a directory/folder: **`mkdir <name>`**
 
-Creating directories and subdirectories in one step: `**mkdir -p <dir>/<sub-dir>/<sub-dir>/<sub-dir>**`
+Creating directories and subdirectories in one step: **`mkdir -p <dir>/<sub-dir>/<sub-dir>/<sub-dir>`**
 
-The `mv` command is used to move or rename files: `**mv <source file/files> <destination directory>**`
+The `mv` command is used to move or rename files: **`mv <source file/files> <destination directory>`**
 
-Coping from old to new file/directory(empty): `**cp <old> <new>**`
-`
-The -R option allows recursive copying, which means copying all files and subdirectories within a directory: `**cp -R <old> <new>**`
+Coping from old to new file/directory(empty): **`cp <old> <new>`**
+
+The -R option allows recursive copying, which means copying all files and subdirectories within a directory: **`cp -R <old> <new>`**
 
 ## Finding Files
 
-`**find <path> -name <searchstring>**`: This can be interpreted as "Look in all files and subdirectories contained in a given path, and print the names of the files containing the search string in their name" (not in their content).
+**`find <path> -name <searchstring>`**: This can be interpreted as "Look in all files and subdirectories contained in a given path, and print the names of the files containing the search string in their name" (not in their content).
 
 `locate` can be used as well for finding files, it's better for machine performance.
 
@@ -282,11 +282,11 @@ The -R option allows recursive copying, which means copying all files and subdir
 
 The `"grep"` command is a powerful text-searching tool used in Unix-like operating systems.
 
-Searching for a specific word in a file: `**grep "apple" fruits.txt**`
+Searching for a specific word in a file: **`grep "apple" fruits.txt`**
 
-Searching for a pattern using regular expressions: `**grep "[0-9]{3}-[0-9]{4}" contacts.txt**`
+Searching for a pattern using regular expressions: **`grep "[0-9]{3}-[0-9]{4}" contacts.txt`**
 
-Searching recursively in a directory: `**grep "error" -r /var/log/**`
+Searching recursively in a directory: **`grep "error" -r /var/log/`**
 
 **Viewing Files** 
 `cat <filename>` ,` head or tail -n <filename>` head command helps view the first "n" lines on the file and tail command helps view the last "n" lines on the file. 
